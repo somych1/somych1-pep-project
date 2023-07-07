@@ -28,7 +28,7 @@ public class AccountServiceLayer {
     }
 
     public boolean validateUsername(String username){
-        if(username != null){
+        if(username != null && username.length() > 0){
             for(int i = 0; i < username.length(); i++){
                 if(Character.isWhitespace(username.charAt(i))){
                     return false;
