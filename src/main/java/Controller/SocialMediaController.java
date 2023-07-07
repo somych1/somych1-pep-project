@@ -42,6 +42,7 @@ public class SocialMediaController {
         if(postedMessage == null){
             context.status(400);
         } else {
+            context.status(200);
             context.json(mapper.writeValueAsString(postedMessage));
         }
     }
