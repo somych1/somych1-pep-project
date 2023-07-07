@@ -22,6 +22,7 @@ public class MessageDAO {
             preparedStatement.setLong(3, message.getTime_posted_epoch());
             ResultSet pkeyRS = preparedStatement.getGeneratedKeys();
             if(pkeyRS.next()){
+                System.out.println("this is MessageDAO 777777777777777777777");
                 int generatedId = (int) pkeyRS.getInt(1);
                 return new Message(generatedId, message.getPosted_by(), message.getMessage_text(), message.getTime_posted_epoch());
             }
