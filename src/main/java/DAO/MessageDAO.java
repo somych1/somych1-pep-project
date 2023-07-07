@@ -11,6 +11,7 @@ import java.sql.Statement;
 public class MessageDAO {
 
     public Message createMessage(Message message){
+        System.out.println("this is MessageDAO 0000000");
         Connection connection = ConnectionUtil.getConnection();
         try{
 //            String sql = "INSERT INTO message (posted_by, message_text, time_posted_epoch) VALUES (?, ?, ?)";
