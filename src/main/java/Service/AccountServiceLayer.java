@@ -14,6 +14,10 @@ public class AccountServiceLayer {
         this.accountDao = dao;
     }
 
+    public Account loginAccount(Account account){
+        return accountDao.loginAccount(account.getUsername(), account.getPassword());
+    }
+
     public Account createAccount(Account account){
         //Check for whitespaces
         if(validateUsername(account.getUsername()) && validatePassword(account.getPassword())){

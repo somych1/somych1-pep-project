@@ -7,6 +7,24 @@ import java.sql.*;
 
 public class AccountDao {
 
+    public Account loginAccount(String username, String password){
+        Connection connection = ConnectionUtil.getConnection();
+        try{
+            String sql = " SELECT * FROM account WHERE username=? AND password=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){
+                Account account = new Account(rs.getInt("account_id"), rs.getString("username"), rs.getString("password"));
+                return account;
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
+
     public Account createAccount(Account account) {
         Connection connection = ConnectionUtil.getConnection();
         try{
