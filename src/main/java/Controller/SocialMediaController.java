@@ -39,6 +39,7 @@ public class SocialMediaController {
         ObjectMapper mapper = new ObjectMapper();
         Message newMessage = mapper.readValue(context.body(), Message.class);
         Message postedMessage = messageServiceLayer.createMessage(newMessage);
+        System.out.println("this is postMessage 1111111111111111111");
         if(postedMessage == null){
             context.status(400);
         } else {
