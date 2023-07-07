@@ -14,9 +14,9 @@ import io.javalin.http.Context;
  */
 public class SocialMediaController {
     AccountServiceLayer accountServiceLayer;
-//    public SocialMediaController {
-//        accountServiceLayer = new AccountServiceLayer();
-//    }
+    public SocialMediaController() {
+        accountServiceLayer = new AccountServiceLayer();
+    }
     /**
      * In order for the test cases to work, you will need to write the endpoints in the startAPI() method, as the test
      * suite must receive a Javalin object from this method.

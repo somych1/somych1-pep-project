@@ -6,6 +6,10 @@ import Model.Account;
 public class AccountServiceLayer {
     AccountDao accountDao;
 
+    public AccountServiceLayer(){
+        this.accountDao = new AccountDao();
+    }
+
     public AccountServiceLayer(AccountDao dao){
         this.accountDao = dao;
     }
