@@ -38,15 +38,15 @@ public class SocialMediaController {
         return app;
     }
 
-    private void getAllMessages(Context context) throws JsonProcessingException {
+    private void getAllMessages(Context context) {
         List<Message> messageList = messageServiceLayer.getAllMessages();
         context.json(messageList);
     }
 
     private void postMessage(Context context) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        Message newMessage = mapper.readValue(context.body(), Message.class);
-        Message postedMessage = messageServiceLayer.createMessage(newMessage);
+        Message message = mapper.readValue(context.body(), Message.class);
+        Message postedMessage = messageServiceLayer.createMessage(message);
         if(postedMessage == null){
             context.status(400);
         } else {
@@ -60,8 +60,8 @@ public class SocialMediaController {
      */
     private void createAccountHandler(Context context) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        Account newAccount = mapper.readValue(context.body(), Account.class);
-        Account createdAccount = accountServiceLayer.createAccount(newAccount);
+        Account account = mapper.readValue(context.body(), Account.class);
+        Account createdAccount = accountServiceLayer.createAccount(account);
         if(createdAccount == null){
             context.status(400);
         } else{
