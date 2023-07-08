@@ -36,4 +36,12 @@ public class MessageServiceLayer {
     public Message getMessageById(int messageId){
         return messageDAO.getMessageById(messageId);
     }
+
+    public Message deleteMessageById(int messageId){
+        Message message = messageDAO.getMessageById(messageId);
+        if (message != null){
+            messageDAO.deleteMessageById(messageId);
+        }
+        return message;
+    }
 }

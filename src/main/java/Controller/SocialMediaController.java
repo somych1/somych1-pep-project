@@ -35,8 +35,17 @@ public class SocialMediaController {
         app.post("/messages", this::postMessage);
         app.get("/messages", this::getAllMessages);
         app.get("/messages/{message_id}", this::getMessageById);
+        app.delete("/messages/{message_id}", this::deleteMessageById);
 
         return app;
+    }
+
+    private void deleteMessageById(Context context){
+        int messageId = Integer.parseInt(context.pathParam("{message_id}"));
+        Message message = messageServiceLayer.deleteMessageById(messageId);
+        if (message != null){
+            context.json(message);
+        }
     }
 
     private void getMessageById(Context context){
