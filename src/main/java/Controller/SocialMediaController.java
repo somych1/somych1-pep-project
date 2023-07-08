@@ -44,7 +44,6 @@ public class SocialMediaController {
         } else {
             context.status(200);
             context.json(mapper.writeValueAsString(postedMessage));
-            System.out.println(postedMessage.toString());
         }
     }
 
