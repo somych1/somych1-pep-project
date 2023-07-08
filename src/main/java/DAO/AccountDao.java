@@ -69,7 +69,9 @@ public class AccountDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, account_id);
             ResultSet rs = preparedStatement.executeQuery();
+            System.out.println("before rs.next--------");
             while (rs.next()){
+                System.out.println(rs);
                 System.out.println(rs.getInt(1) + "--------------");
                 return true;
             }
