@@ -50,7 +50,8 @@ public class MessageServiceLayer {
         if(validateMessageText(message.getMessage_text())){
             Message existingMessage = messageDAO.getMessageById(messageId);
             if(existingMessage != null){
-                return messageDAO.updateMessageTextById(existingMessage, message.getMessage_text());
+                messageDAO.updateMessageTextById(messageId, message);
+                return messageDAO.getMessageById(messageId);
             }
         }
         return null;
