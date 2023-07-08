@@ -60,6 +60,7 @@ public class SocialMediaController {
         } else{
             context.status(200);
             context.json(mapper.writeValueAsString(createdAccount));
+            System.out.println(createdAccount.toString());
         }
     }
 
