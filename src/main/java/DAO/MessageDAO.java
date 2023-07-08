@@ -30,7 +30,7 @@ public class MessageDAO {
                 insertStatement.setString(2,message.getMessage_text());
                 insertStatement.setLong(3,message.getTime_posted_epoch());
                 int rowsAffected = insertStatement.executeUpdate();
-                int generatedId = (int) rs.getInt(1);
+                int generatedId = (int) rs.getInt(2);
                 return new Message(generatedId, message.getPosted_by(), message.getMessage_text(), message.getTime_posted_epoch());
             }
 
