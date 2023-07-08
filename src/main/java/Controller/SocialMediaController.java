@@ -50,8 +50,7 @@ public class SocialMediaController {
         if(postedMessage == null){
             context.status(400);
         } else {
-            context.status(200);
-            context.json(mapper.writeValueAsString(postedMessage));
+            context.json(postedMessage);
         }
     }
 
@@ -66,8 +65,7 @@ public class SocialMediaController {
         if(createdAccount == null){
             context.status(400);
         } else{
-            context.status(200);
-            context.json(mapper.writeValueAsString(createdAccount));
+            context.json(createdAccount);
         }
     }
 
@@ -78,8 +76,7 @@ public class SocialMediaController {
         if (foundAccount == null){
             context.status(401);
         } else {
-            context.status(200);
-            context.json(mapper.writeValueAsString(foundAccount));
+            context.json(foundAccount);
         }
     }
 
