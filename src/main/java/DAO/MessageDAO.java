@@ -15,7 +15,11 @@ public class MessageDAO {
         Connection connection = ConnectionUtil.getConnection();
         try{
 //            String sql = "INSERT INTO message (posted_by, message_text, time_posted_epoch) VALUES (?, ?, ?)";
-            String sql = "INSERT INTO message (posted_by, message_text, time_posted_epoch) VALUES ((SELECT account_id FROM account WHERE account_id=?), ?, ?)";
+            String sql =
+                    "IF EXIST (SELECT 1 FROM account WHERE account_id = ?) " +
+                    "BEGIN " +
+                            "INSERT INTO message (posted_by, message_text, time_posted_epoch) VALUES (?, ?, ?) " +
+                            "END";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             System.out.println("this is MessageDAO 1111");
