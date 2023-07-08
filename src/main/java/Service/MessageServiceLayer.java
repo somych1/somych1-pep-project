@@ -55,4 +55,8 @@ public class MessageServiceLayer {
         }
         return null;
     }
+
+    public List<Message> getAllMessagesByPostedById(int postedById){
+        return messageDAO.getAllMessagesByPostedById(postedById);
+    }
 }
