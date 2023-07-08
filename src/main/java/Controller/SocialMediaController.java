@@ -9,6 +9,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.Javalin;
 import io.javalin.http.Context;
 
+import java.util.List;
+
 /**
  * TODO: You will need to write your own endpoints and handlers for your controller. The endpoints you will need can be
  * found in readme.md as well as the test cases. You should
@@ -31,8 +33,14 @@ public class SocialMediaController {
         app.post("/register", this::createAccountHandler);
         app.post("/login", this::loginAccountHandler);
         app.post("/messages", this::postMessage);
+        app.get("/messages", this::getAllMessages);
 
         return app;
+    }
+
+    private void getAllMessages(Context context) throws JsonProcessingException {
+        List<Message> messageList = messageServiceLayer.getAllMessages();
+        context.json(messageList);
     }
 
     private void postMessage(Context context) throws JsonProcessingException {

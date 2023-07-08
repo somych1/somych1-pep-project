@@ -4,6 +4,8 @@ import DAO.AccountDao;
 import DAO.MessageDAO;
 import Model.Message;
 
+import java.util.List;
+
 public class MessageServiceLayer {
     MessageDAO messageDAO;
     AccountDao accountDao;
@@ -25,5 +27,9 @@ public class MessageServiceLayer {
             return true;
         }
         return false;
+    }
+
+    public List<Message> getAllMessages(){
+        return messageDAO.getAllMessages();
     }
 }
