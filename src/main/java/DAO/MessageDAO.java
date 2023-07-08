@@ -7,8 +7,6 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.sql.Statement.RETURN_GENERATED_KEYS;
-
 public class MessageDAO {
 
     public Message createMessage(Message message){
@@ -24,7 +22,7 @@ public class MessageDAO {
             preparedStatement.executeUpdate();
             ResultSet pkeyRS = preparedStatement.getGeneratedKeys();
             if(pkeyRS.next()){
-                int generatedId = (int) pkeyRS.getInt(1);
+                int generatedId = pkeyRS.getInt(1);
                 return new Message(generatedId, message.getPosted_by(), message.getMessage_text(), message.getTime_posted_epoch());
             }
         } catch (Exception e) {
