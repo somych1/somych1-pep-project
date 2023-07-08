@@ -10,11 +10,11 @@ public class MessageServiceLayer {
 
     public MessageServiceLayer(){
         this.messageDAO = new MessageDAO();
+        this.accountDao = new AccountDao();
     }
 
     public Message createMessage(Message message){
-        System.out.println(accountDao.checkAccountIdExistenceById(message.getPosted_by()) + "---------");
-        if(validateMessageText(message.getMessage_text())){
+        if(validateMessageText(message.getMessage_text()) && accountDao.checkAccountIdExistenceById(message.getPosted_by())){
             return messageDAO.createMessage(message);
         }
         return null;
