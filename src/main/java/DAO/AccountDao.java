@@ -69,7 +69,9 @@ public class AccountDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, account_id);
             ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){return true;
+            while (rs.next()){
+                System.out.println(rs.getInt(1) + "--------------");
+                return true;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
