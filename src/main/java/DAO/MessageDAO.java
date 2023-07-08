@@ -16,9 +16,9 @@ public class MessageDAO {
         try{
 //            String sql = "INSERT INTO message (posted_by, message_text, time_posted_epoch) VALUES (?, ?, ?)";
             String sql =
-                    "IF EXISTS (SELECT 1 FROM account WHERE account_id = ?) " +
-                    "BEGIN " +
-                            "INSERT INTO message (posted_by, message_text, time_posted_epoch) VALUES (?, ?, ?) " +
+                    "IF EXISTS (SELECT 1 FROM account WHERE account_id = ?)\n" +
+                            "BEGIN\n" +
+                            "INSERT INTO message (posted_by, message_text, time_posted_epoch) VALUES ((SELECT account_id FROM account WHERE account_id=?), ?, ?);\n" +
                             "END";
 
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
