@@ -20,9 +20,8 @@ public class MessageDAO {
             PreparedStatement preparedStatement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             System.out.println("this is MessageDAO 1111");
             preparedStatement.setInt(1, message.getPosted_by());
-            preparedStatement.setInt(2, message.getPosted_by());
-            preparedStatement.setString(3, message.getMessage_text());
-            preparedStatement.setLong(4, message.getTime_posted_epoch());
+            preparedStatement.setString(2, message.getMessage_text());
+            preparedStatement.setLong(3, message.getTime_posted_epoch());
             preparedStatement.executeUpdate();
             ResultSet pkeyRS = preparedStatement.getGeneratedKeys();
             System.out.println("this is MessageDAO 2222222");
