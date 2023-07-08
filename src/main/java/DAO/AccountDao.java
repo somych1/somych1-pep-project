@@ -62,12 +62,12 @@ public class AccountDao {
         return null;
     }
 
-    public boolean checkAccountIdExistenceById(int account_id){
+    public boolean checkAccountIdExistenceById(int accountId){
         Connection connection = ConnectionUtil.getConnection();
         try{
             String sql = "SELECT 1 FROM account WHERE account_id=?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, account_id);
+            preparedStatement.setInt(1, accountId);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
                 return true;

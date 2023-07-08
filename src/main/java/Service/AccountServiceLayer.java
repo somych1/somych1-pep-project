@@ -14,13 +14,6 @@ public class AccountServiceLayer {
         this.accountDao = dao;
     }
 
-//    public Account loginRegisterAccount(Account account){
-//        if(validateUsername(account.getUsername()) && validatePassword(account.getPassword())){
-//
-//        }
-//        return null;
-//    }
-
     public Account loginAccount(Account account){
         return accountDao.loginAccount(account.getUsername(), account.getPassword());
     }

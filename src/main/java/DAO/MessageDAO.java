@@ -50,12 +50,12 @@ public class MessageDAO {
         }
     }
 
-    public Message getMessageById(int message_id){
+    public Message getMessageById(int messageId){
         Connection connection = ConnectionUtil.getConnection();
         try{
             String sql = "SELECT * FROM message WHERE message_id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, message_id);
+            preparedStatement.setInt(1, messageId);
             ResultSet rs = preparedStatement.executeQuery();
             if(rs.next()){
                 Message message = new Message(rs.getInt("message_id"), rs.getInt("posted_by"), rs.getString("message_text"), rs.getLong("time_posted_epoch"));

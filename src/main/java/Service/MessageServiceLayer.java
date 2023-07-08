@@ -22,8 +22,8 @@ public class MessageServiceLayer {
         return null;
     }
 
-    public boolean validateMessageText(String message_text){
-        if(message_text.length() > 0 && message_text.length() < 255){
+    public boolean validateMessageText(String messageText){
+        if(messageText.length() > 0 && messageText.length() < 255){
             return true;
         }
         return false;
@@ -33,7 +33,7 @@ public class MessageServiceLayer {
         return messageDAO.getAllMessages();
     }
 
-    public Message getMessageById(int message_id){
-        return messageDAO.getMessageById(message_id);
+    public Message getMessageById(int messageId){
+        return messageDAO.getMessageById(messageId);
     }
 }
