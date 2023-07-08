@@ -5,6 +5,7 @@ import DAO.MessageDAO;
 import Model.Message;
 
 import java.util.List;
+import java.util.Map;
 
 public class MessageServiceLayer {
     MessageDAO messageDAO;
@@ -43,5 +44,15 @@ public class MessageServiceLayer {
             messageDAO.deleteMessageById(messageId);
         }
         return message;
+    }
+
+    public Message updateMessageTextById(int messageId, Message message){
+        if(validateMessageText(message.getMessage_text())){
+            Message existingMessage = messageDAO.getMessageById(messageId);
+            if(existingMessage != null){
+                return messageDAO.updateMessageTextById(existingMessage, message.getMessage_text());
+            }
+        }
+        return null;
     }
 }
