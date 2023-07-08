@@ -61,6 +61,21 @@ public class AccountDao {
         }
         return null;
     }
+
+    public boolean checkAccountIdExistenceById(int account_id){
+        Connection connection = ConnectionUtil.getConnection();
+        try{
+            String sql = "SELECT 1 FROM account WHERE account_id=?";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, account_id);
+            ResultSet rs = preparedStatement.executeQuery();
+            while (rs.next()){return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return false;
+    }
 //
 //    @Override
 //    public List<Account> getAllAccounts() {
