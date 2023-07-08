@@ -13,7 +13,8 @@ public class MessageServiceLayer {
     }
 
     public Message createMessage(Message message){
-        if(validateMessageText(message.getMessage_text()) && accountDao.checkAccountIdExistenceById(message.getPosted_by())){
+        System.out.println(accountDao.checkAccountIdExistenceById(message.getPosted_by()) + "---------");
+        if(validateMessageText(message.getMessage_text())){
             return messageDAO.createMessage(message);
         }
         return null;
