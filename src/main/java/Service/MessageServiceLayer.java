@@ -5,7 +5,6 @@ import DAO.MessageDAO;
 import Model.Message;
 
 import java.util.List;
-import java.util.Map;
 
 public class MessageServiceLayer {
     MessageDAO messageDAO;
